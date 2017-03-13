@@ -25,7 +25,7 @@
 		
 	-Light
 		-Explosions, gun fire (muzzle flash)
-		-Dynamic lighting with how level is lit (e.g a level may have no lighting so the only light is where the player is looking)
+		-Dynamic lighting with how level is lit (e.g the only light is where the player is looking)
 		-Flickering lights
 		-Swinging lights
 		
