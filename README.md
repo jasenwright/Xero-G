@@ -48,10 +48,6 @@
 		-Enemies take into account player motion and shoot in the direction there are heading.
 		
 	
-Technical Depth
-	Procedural Generation
+###Technical Depth
+	####-Procedural Generation
 		-Levels are procedurally generated
-		
-# Xero-G
-
-## Assignment 3 for CSC 205
