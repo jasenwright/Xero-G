@@ -45,9 +45,8 @@
 		-AI knows where boxes are to jump up on to gain better vantage point
 		-Kamikaze enemies, try to run at you and blow up
 		-Enemies try and dodge your bullets
-		-Enemies take into account player motion and shoot in the direction there are heading.
+		-Enemies take into account player motion and shoot in the direction there are heading
 		
-	
 ###Technical Depth
-	####-Procedural Generation
+	-Procedural Generation
 		-Levels are procedurally generated
