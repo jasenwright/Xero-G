@@ -1,67 +1,141 @@
 import java.util.Random;
 public class proceduralLevel{
 
+	public static char[][] cave = new char[15][75];
+
 	public static void main(String [] args){
-		int[][] cave = new int[20][75];
+		
+		Random rand = new Random();
+		int prob;
+		int numWalls;
 		
 		//Create 'cave'
-		//3 represents a wall
-		//1 represents potential open space
-		//0 will represent open space
-		for (int i=0;i<cave.length;i++){
-			for(int y=0; y<cave[0].length; y++){
-				if (i==0 || i==cave.length-1){
-					cave[i][y] = 3;
+		//# represents a wall
+		//. will represent open space
+		boolean percentFalse = true;
+		double walls=0;
+		double total=0;
+		
+
+		for (int i=0;i<cave.length;i++) {
+			for(int y=0; y<cave[0].length; y++) {
+				prob = rand.nextInt(99);				
+				if (prob < 55) {
+					cave[i][y] = '#';
+				} else {
+					cave[i][y] = '.';
 				}
-				else if (y == 0 || y == cave[0].length-1){
-					cave[i][y] = 3;
+			}
+		}
+			
+		fillBorder();
+		printCave();
+		
+		// Cellular Automata
+		for (int z = 0; z < 5; z++) {
+		
+			for(int j=0; j<cave[0].length; j++) {
+				for (int i=0;i<cave.length;i++) {
+				
+					
+					if (i==0 || i==cave.length-1){
+						continue;
+					}
+					else if (j == 0 || j == cave[0].length-1){
+						continue;
+					}
+					
+					numWalls = 0;
+					char currSpace = cave[i][j];
+					
+					numWalls += lookAround(i, j);
+					if (numWalls > 5) {
+						cave[i][j] = '#';
+					} else if (numWalls < 4) {
+						cave[i][j] = '.';
+					}
 				}
-				else{
-					cave[i][y] = 1;
+			}
+		
+		}
+		fillBorder();
+		printCave();
+			
+	}
+	
+	// col = x, row = y
+	public static int lookAround(int row, int col) {
+		int walls = 0;
+		
+		if (row - 1 >= 0 ) {
+			// checks north
+			if (cave[row - 1][col] == '#') {
+				walls++;
+			}
+			// checks northwest
+			if (col-1 >= 0){
+				if (cave[row-1][col-1] == '#'){
+					walls++;
+				}
+			}
+			// checks northeast
+			if (col + 1 < cave[0].length) {
+				if (cave[row-1][col+1] == '#'){
+					walls++;
 				}
 			}
 		}
 		
-		//Build the cave-----------------------------------------------------------------
-		
-		for (int z=0; z<5; z++){
-		
-			int value = 1;
-			int upDirection = 0;
-			int rightDirection = 0;
-			Random r = new Random();
-			//Adjust these if you want to start in a different location in the cave
-			int xPosition = 9;
-			int yPosition = 30;
-			
-			//Code just stops when it hits a wall
-			//Could be run multiple times to create 
-			while (value !=3){
-				cave[xPosition][yPosition] = 0;
-				//This is the exclusive or which states that one of right or upDirection needs to be 0
-				//	so that don't move diagonally
-				while (!(rightDirection == 0 ^ upDirection==0)){
-					rightDirection = r.nextInt(1+2) - 1;
-					upDirection = r.nextInt(1+2) - 1;
-				}
-
-				//Adjust x and y position in cave
-				xPosition = xPosition + upDirection;
-				yPosition = yPosition + rightDirection;
-				
-				//See what value you're on so if it's a wall stop the algorithm
-				value = cave[xPosition][yPosition];
-				
-				//Needed to reset upDirection and rightDirection so will enter the above while loop 
-				upDirection = 0;
-				rightDirection= 0;
+		if (row + 1 < cave.length ) {
+			// checks south
+			if (cave[row + 1][col] == '#') {
+				walls++;
 			}
-		}	
-		//-------------------------------------------------------------------------------------------
-		System.out.println();
-		System.out.println();
-		System.out.println();
+			// checks southwest
+			if (col-1 >= 0){
+				if (cave[row+1][col-1] == '#'){
+					walls++;
+				}
+			}
+			// checks southeast
+			if (col + 1 < cave[0].length) {
+				if (cave[row+1][col+1] == '#'){
+					walls++;
+				}
+			}
+		}
 		
+		//checks west
+		if (col - 1 >= 0) {
+			if (cave[row][col-1] == '#') {
+				walls++;
+			}
+		}
+		
+		//checks east
+		if (col + 1 < cave[0].length) {
+			if (cave[row][col+1] == '#') {
+				walls++;
+			}
+		}
+		
+		return walls;
+	}
+	
+	public static void fillBorder() {
+		for (int i=0;i<cave.length;i++){
+			for(int y=0; y<cave[0].length; y++){
+				if (i==0 || i==cave.length-1){
+					cave[i][y] = '#';
+				}
+				else if (y == 0 || y == cave[0].length-1){
+					cave[i][y] = '#';
+				}
+			}
+		}
+	}
+	
+	public static void printCave() {
 		//Print out what cave looks like after digging
 		System.out.println();
 		for (int i=0;i<cave.length;i++){
@@ -69,8 +143,6 @@ public class proceduralLevel{
 				System.out.print(cave[i][y]);
 			}
 			System.out.println();
-		}		
-		
-			
+		}
 	}
 }
