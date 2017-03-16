@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.*;
 public class Automata{
 
-	public static char[][] cave = new char[25][75];
+	public static char[][] cave = new char[15][75];
 	public static int xEnd = 10;
 	public static int yEnd = 10;
 
