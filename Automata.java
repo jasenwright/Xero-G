@@ -1,7 +1,10 @@
 import java.util.Random;
+import java.util.*;
 public class Automata{
 
-	public static char[][] cave = new char[15][75];
+	public static char[][] cave = new char[25][75];
+	public static int xEnd = 10;
+	public static int yEnd = 10;
 
 	public static void main(String [] args){
 		
@@ -10,26 +13,127 @@ public class Automata{
 		printCave();
 		cellularAutomata();
 		fillBorder();
-		findCaves();
 		printCave();
-			
+		List<Integer> xAndYPositions = new ArrayList<Integer>();
+		xAndYPositions = findCaves();
+		printCave();
+		connectCaves(xAndYPositions);
+		printCave();
+		cleanCave();
+		printCave();	
 	}
 	
-	//TO DO!-----------------------------------
-	public static void findCaves(){
+	public static void cleanCave(){
 		for (int i=0; i< cave.length; i++){
 			for (int j=0; j< cave[0].length; j++){
-				if (cave[i][j] == '.'){
-					int xpos = i;
-					int ypos = j;
-					while(cave[xpos]ypos]!='1'){
-						if (cave[xpos+1][ypos] =='.'){
-							
+				if (cave[i][j]!='#'){
+					cave[i][j]=' ';
 				}
 			}
 		}		
 	}
-	//-------------------------------------------------
+	
+	public static void connectCaves(List<Integer> positions){
+		
+		for (int i=0; i<positions.size(); i=i+2){
+			findPath(xEnd, yEnd, positions.get(i), positions.get(i+1));
+		}
+	}
+	
+	public static List<Integer> findCaves(){
+		int count = 0;
+		List<Integer> listOfXYPositions = new ArrayList<Integer>();
+		for (int i=0; i< cave.length; i++){
+			for (int j=0; j< cave[0].length; j++){
+				if (cave[i][j] == '.'){
+					//Lists to keep track of where the 'miner' has gone
+					List<Integer> xPositionList = new ArrayList<Integer>();
+					List<Integer> yPositionList = new ArrayList<Integer>();
+					int xpos = i;
+					int ypos = j;
+					boolean foundSpace = true;
+					count++;
+					char countChar = (char)(count+48);
+					cave[i][j] = countChar;
+					
+					//While a space is available to fill, always keep against the wall and move in a circle towards the middle
+					while(foundSpace){
+						foundSpace = false;
+						//Add current position to list of positions for backtracking
+						xPositionList.add(xpos);
+						yPositionList.add(ypos);
+						
+						//Try and go up because theres a wall to your left
+						if ((cave[xpos][ypos-1]=='#' || cave[xpos][ypos-1]==countChar) && cave[xpos-1][ypos] == '.'){
+							cave[xpos-1][ypos] = countChar;
+							xpos--;
+							foundSpace = true;
+						}
+						//Try and go right because there's a wall above you
+						else if ((cave[xpos-1][ypos]=='#' || cave[xpos-1][ypos]==countChar) && cave[xpos][ypos+1] == '.'){
+							cave[xpos][ypos+1] = countChar;
+							ypos++;
+							foundSpace = true;
+						}
+						//Try and go down because there's a wall to your right
+						else if ((cave[xpos][ypos+1]=='#' || cave[xpos][ypos+1]==countChar)  && cave[xpos+1][ypos] == '.'){
+							cave[xpos+1][ypos] = countChar;
+							xpos++;
+							foundSpace = true;
+						}
+						//Try and go left because there's a wall below you
+						else if((cave[xpos+1][ypos]=='#' || cave[xpos+1][ypos]==countChar) && cave[xpos][ypos-1] == '.'){
+							cave[xpos][ypos-1] = countChar;
+							ypos--;
+							foundSpace = true;
+						}
+						
+						
+						//Either have gotten to the middle of the cave, or stuck
+						if (foundSpace==false){
+							//Retrace steps, start at -1 incase only 1 item in list 
+							for (int k = xPositionList.size()-1; k>=0; k--){
+								////Try and go up because theres a wall to your left
+								if ((cave[xPositionList.get(k)][yPositionList.get(k)-1]=='#' || cave[xPositionList.get(k)][yPositionList.get(k)-1]==countChar) && cave[xPositionList.get(k)-1][yPositionList.get(k)] == '.'){
+									xpos = xPositionList.get(k);
+									ypos = yPositionList.get(k);
+									foundSpace = true;
+									break;
+								}
+								//Try and go right because there's a wall above you
+								else if ((cave[xPositionList.get(k)-1][ypos]=='#' || cave[xPositionList.get(k)-1][yPositionList.get(k)]==countChar) && cave[xPositionList.get(k)][yPositionList.get(k)+1] == '.'){
+									xpos = xPositionList.get(k);
+									ypos = yPositionList.get(k);
+									foundSpace = true;
+									break;
+								}
+								//Try and go down because there's a wall to your right
+								else if ((cave[xPositionList.get(k)][ypos+1]=='#' || cave[xPositionList.get(k)][yPositionList.get(k)+1]==countChar)  && cave[xPositionList.get(k)+1][yPositionList.get(k)] == '.'){
+									xpos = xPositionList.get(k);
+									ypos = yPositionList.get(k);
+									foundSpace = true;
+									break;
+								}
+								//Try and go left because there's a wall below you
+								else if((cave[xPositionList.get(k)+1][ypos]=='#' || cave[xPositionList.get(k)+1][yPositionList.get(k)]==countChar) && cave[xPositionList.get(k)][yPositionList.get(k)-1] == '.'){
+									xpos = xPositionList.get(k);
+									ypos = yPositionList.get(k);
+									foundSpace = true;
+									break;
+								}	
+							}
+						}
+					}
+					//This is to make the last position the correct character
+					cave[xpos][ypos] = countChar;
+					listOfXYPositions.add(xpos);
+					listOfXYPositions.add(ypos);
+				}
+			}
+		}
+		return listOfXYPositions;
+	}
+	
 	public static void cellularAutomata(){
 		// Cellular Automata
 		int numWalls;
