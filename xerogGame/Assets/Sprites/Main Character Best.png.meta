@@ -1,18 +1,19 @@
 fileFormatVersion: 2
 guid: 6ad6e7b1af6e90c46834cab493b302a3
-timeCreated: 1489458811
+timeCreated: 1490225717
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Main Character Best_0
-    21300002: Main Character Best_1
-    21300004: Main Character Best_2
-    21300006: Main Character Best_3
-    21300008: Main Character Best_4
-    21300010: Main Character Best_5
-    21300012: Main Character Best_6
-    21300014: Main Character Best_7
-    21300016: Main Character Best_8
+    21300000: Main Character Idle
+    21300002: Main Character Run_1
+    21300004: Main Character Run_2
+    21300006: Main Character Run_3
+    21300008: Main Character Run_4
+    21300010: Main Character Run_5
+    21300012: Main Character Run_6
+    21300014: Main Character Run_7
+    21300016: Main Character Run_8
+    21300018: Main Character Jump
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -79,117 +80,130 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Main Character Best_0
+      name: Main Character Idle
       rect:
         serializedVersion: 2
-        x: 25
-        y: 1084
-        width: 47
-        height: 61
+        x: 33
+        y: 1087
+        width: 37
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Main Character Best_1
+      name: Main Character Run_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 909
-        width: 60
-        height: 60
+        x: 32
+        y: 915
+        width: 37
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Main Character Best_2
+      name: Main Character Run_2
       rect:
         serializedVersion: 2
-        x: 82
-        y: 908
-        width: 45
-        height: 62
+        x: 87
+        y: 915
+        width: 32
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Main Character Best_3
+      name: Main Character Run_3
       rect:
         serializedVersion: 2
-        x: 132
-        y: 910
-        width: 42
-        height: 59
+        x: 135
+        y: 915
+        width: 35
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Main Character Best_4
+      name: Main Character Run_4
       rect:
         serializedVersion: 2
-        x: 178
-        y: 910
-        width: 47
-        height: 62
+        x: 182
+        y: 915
+        width: 38
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Main Character Best_5
+      name: Main Character Run_5
       rect:
         serializedVersion: 2
-        x: 230
-        y: 911
-        width: 43
-        height: 62
+        x: 235
+        y: 915
+        width: 36
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Main Character Best_6
+      name: Main Character Run_6
       rect:
         serializedVersion: 2
-        x: 282
-        y: 913
-        width: 43
-        height: 58
+        x: 291
+        y: 915
+        width: 32
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Main Character Best_7
+      name: Main Character Run_7
       rect:
         serializedVersion: 2
-        x: 333
-        y: 911
-        width: 46
-        height: 61
+        x: 339
+        y: 915
+        width: 35
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Main Character Best_8
+      name: Main Character Run_8
       rect:
         serializedVersion: 2
-        x: 383
-        y: 910
-        width: 49
-        height: 60
+        x: 386
+        y: 915
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Main Character Jump
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 1087
+        width: 35
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
