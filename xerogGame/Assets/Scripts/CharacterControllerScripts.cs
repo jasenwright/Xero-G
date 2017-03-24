@@ -21,8 +21,11 @@ public class CharacterControllerScripts : MonoBehaviour {
 
     public float maxJump = 30;
 
-	// Use this for initialization
-	void Start () {
+    public Camera camera;
+    public Gun gun;
+
+    // Use this for initialization
+    void Start () {
 		anim = GetComponent<Animator>();
 	}
 	
@@ -47,12 +50,12 @@ public class CharacterControllerScripts : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKey(KeyCode.UpArrow)) {
+		if (Input.GetKey(KeyCode.W)) {
 			anim.SetBool ("Ground", false);
 			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpForce));
             GetComponent<Rigidbody2D>().velocity = Vector3.ClampMagnitude(GetComponent<Rigidbody2D>().velocity, maxJump);
         }
-	}
+    }
 
 	void Flip() {
 		facingRight = !facingRight;
@@ -60,4 +63,8 @@ public class CharacterControllerScripts : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    public bool isFacingRight() {
+        return facingRight;
+    }
 }
