@@ -22,11 +22,13 @@ public class CharacterControllerScripts : MonoBehaviour {
     public float maxJump = 30;
 
     public Camera camera;
-    public Gun gun;
+
+    Transform playerGraphics;   // Reference to graphics to change direction
 
     // Use this for initialization
     void Start () {
 		anim = GetComponent<Animator>();
+        playerGraphics = transform.FindChild("Graphics");
 	}
 	
 	// Update is called once per frame
@@ -62,6 +64,14 @@ public class CharacterControllerScripts : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+        ArmRotation[] arm = GetComponentsInChildren<ArmRotation>();
+        if (arm[0].rotationOffset == 0)
+        {
+            arm[0].rotationOffset = 180;
+        }
+        else {
+            arm[0].rotationOffset = 0;
+        }
 	}
 
     public bool isFacingRight() {

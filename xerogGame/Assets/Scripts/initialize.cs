@@ -35,11 +35,11 @@ public class initialize : MonoBehaviour {
         float y = 8.4f;
         for (int i = 0; i < cave.GetLength(0); i++)
         {
-            y = y - 0.48f;
+            y = y - 2.65f;
             x = -10.35f;
             for (int j = 0; j < cave.GetLength(1); j++)
             {
-                x = x + 0.48f;
+                x = x + 2.65f;
                 if (cave[i, j] == '#')
                 {
                     Instantiate(tile, new Vector3(x, y, 0), Quaternion.identity);
