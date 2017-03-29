@@ -26,8 +26,8 @@ public class moveXero : MonoBehaviour {
         float fracJourney = distCovered / journeyLength;
         xero.transform.position = Vector3.Lerp(startPosition.transform.position, endPosition.transform.position, fracJourney);
 
-        SpriteRenderer renderer = xero.GetComponent<SpriteRenderer>();
-        Color tempColor = renderer.color;
+        //SpriteRenderer renderer = xero.GetComponent<SpriteRenderer>();
+        //Color tempColor = renderer.color;
         
 
         if (xero.transform.position == endPosition.transform.position && changeColor==false)
