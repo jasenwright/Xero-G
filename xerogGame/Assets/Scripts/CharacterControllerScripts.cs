@@ -21,9 +21,9 @@ public class CharacterControllerScripts : MonoBehaviour {
 
     public float maxJump = 30;
 
-    public Camera camera;
+    public new Camera camera;
 
-    Transform playerGraphics;   // Reference to graphics to change direction
+    Transform playerGraphics;
 
     // Use this for initialization
     void Start () {
