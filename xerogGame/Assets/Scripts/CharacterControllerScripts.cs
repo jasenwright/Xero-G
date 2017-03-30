@@ -65,12 +65,15 @@ public class CharacterControllerScripts : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
         ArmRotation[] arm = GetComponentsInChildren<ArmRotation>();
+        Flipper[] fp = GetComponentsInChildren<Flipper>();
         if (arm[0].rotationOffset == 0)
         {
             arm[0].rotationOffset = 180;
+            fp[0].flipFirePoint();
         }
         else {
             arm[0].rotationOffset = 0;
+            fp[0].flipFirePoint();
         }
 	}
 
