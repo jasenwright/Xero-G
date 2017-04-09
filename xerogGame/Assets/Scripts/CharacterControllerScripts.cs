@@ -21,9 +21,9 @@ public class CharacterControllerScripts : MonoBehaviour {
 
     public float maxJump = 30;
 
-    public Camera camera;
+    public new Camera camera;
 
-    Transform playerGraphics;   // Reference to graphics to change direction
+    Transform playerGraphics;
 
     // Use this for initialization
     void Start () {
@@ -65,12 +65,15 @@ public class CharacterControllerScripts : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
         ArmRotation[] arm = GetComponentsInChildren<ArmRotation>();
+        Flipper[] fp = GetComponentsInChildren<Flipper>();
         if (arm[0].rotationOffset == 0)
         {
             arm[0].rotationOffset = 180;
+            fp[0].flipFirePoint();
         }
         else {
             arm[0].rotationOffset = 0;
+            fp[0].flipFirePoint();
         }
 	}
 
