@@ -8,7 +8,8 @@ public class initialize : MonoBehaviour {
 
     public GameObject tile;
     public GameObject character;
-    public static char[,] cave = new char[25, 75];
+    public GameObject turret;
+    public static char[,] cave = new char[25, 125];
     public static int xEnd = 10;
     public static int yEnd = 10;
 
@@ -24,9 +25,58 @@ public class initialize : MonoBehaviour {
         connectCaves(xAndYPositions);
         cleanCave();
         initializeCaveAndCharacter(tile, character);
+        addTurrets(turret);
         
+    }
+
+    public static void addTurrets(GameObject turret) {
+        System.Random rand = new System.Random();
+        int prob;
+        prob = rand.Next(0, 99);
+ 
+        float x = -10.35f;
+        float y = 8.4f;
+        for (int i = 0; i < cave.GetLength(0); i++) {
+            y = y - 2.65f;
+            x = -10.35f;
+            for (int j = 0; j < cave.GetLength(1); j++) {
+                x = x + 2.65f;
+                //Put turrets on ground
+                if (cave[i, j] != '#' && cave[i+1,j]=='#') {
+                    prob = rand.Next(0, 10);
+                    if (prob == 5) {
+                        Instantiate(turret, new Vector3(x, y - .8f, 0), Quaternion.identity);
+                    }
+                }
+                //Put turrets on roof
+                if (cave[i,j] !='#' && cave[i-1, j] == '#') {
+                    prob = rand.Next(0, 10);
+                    if (prob == 5) {
+                        var tur = Instantiate(turret, new Vector3(x, y + .8f, 0), Quaternion.identity);
+                        tur.transform.Rotate(0, 0, 180f);
+                    }
+                }
+                //Put turrets on right wall
+                if (cave[i, j] != '#' && cave[i, j-1] == '#') {
+                    prob = rand.Next(0, 10);
+                    if (prob == 5) {
+                        var tur = Instantiate(turret, new Vector3(x-.8f, y, 0), Quaternion.identity);
+                        tur.transform.Rotate(0, 0, -90f);
+                    }
+                }
+                //Put turrets left wall
+                if (cave[i, j] != '#' && cave[i, j+1] == '#') {
+                    prob = rand.Next(0, 10);
+                    if (prob == 5) {
+                        var tur = Instantiate(turret, new Vector3(x + .8f, y , 0), Quaternion.identity);
+                        tur.transform.Rotate(0, 0, 90f);
+                    }
+                }
+            }
+        }
 
     }
+            
 
     public static void initializeCaveAndCharacter(GameObject tile, GameObject character)
     {
@@ -35,11 +85,11 @@ public class initialize : MonoBehaviour {
         float y = 8.4f;
         for (int i = 0; i < cave.GetLength(0); i++)
         {
-            y = y - .4f;
+            y = y - 2.65f;
             x = -10.35f;
             for (int j = 0; j < cave.GetLength(1); j++)
             {
-                x = x + .4f;
+                x = x + 2.65f;
                 if (cave[i, j] == '#')
                 {
                     Instantiate(tile, new Vector3(x, y, 0), Quaternion.identity);
