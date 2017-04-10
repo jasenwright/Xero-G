@@ -8,6 +8,7 @@ public class playerHealth : MonoBehaviour {
     public float startingHealth = 100f;
     public float currentHealth;
     public Image healthBar;
+    public GameObject player;
 
     // Use this for initialization
     void Start () {
@@ -28,6 +29,7 @@ public class playerHealth : MonoBehaviour {
         currentHealth -= amount;
         healthBar.fillAmount = currentHealth / startingHealth;
         Debug.Log(healthBar.fillAmount);
+
 
     }
 }
