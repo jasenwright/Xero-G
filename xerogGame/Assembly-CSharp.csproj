@@ -48,11 +48,15 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ArmRotation.cs" />
      <Compile Include="Assets\Scripts\CharacterControllerScripts.cs" />
+     <Compile Include="Assets\Scripts\MenuControl.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
+     <Compile Include="Assets\Scripts\healthPackBehaviour.cs" />
      <Compile Include="Assets\Scripts\initialize.cs" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
+     <Compile Include="Assets\Scripts\moveXero.cs" />
+     <Compile Include="Assets\Scripts\playerHealth.cs" />
+     <Compile Include="Assets\Scripts\turretBulletBeahviour.cs" />
+     <Compile Include="Assets\Scripts\turretFire.cs" />
+     <Compile Include="Assets\Scripts\turretHealth.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -67,9 +71,6 @@
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
