@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class turretFire : MonoBehaviour {
 
     public GameObject bulletPrefab;
@@ -35,7 +36,7 @@ public class turretFire : MonoBehaviour {
 	void Update () {
         
         GameObject character;
-        character = GameObject.Find("Main Character(Clone)");
+        character = GameObject.Find("Main Character Doesn't Run(Clone)");
         if (canFire)
         {
             //Create List of distances
@@ -67,7 +68,7 @@ public class turretFire : MonoBehaviour {
             lastFireTime = Time.time;
         
             //Get the bulletEmitter to rotate towards the player
-            Vector3 dir = GameObject.Find("Main Character(Clone)").transform.position - bulletEmitter.transform.position;
+            Vector3 dir = GameObject.Find("Main Character Doesn't Run(Clone)").transform.position - bulletEmitter.transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             bulletEmitter.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 

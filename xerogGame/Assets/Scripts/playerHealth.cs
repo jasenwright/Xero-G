@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
+
 public class playerHealth : MonoBehaviour {
 
     public float startingHealth = 100f;
@@ -28,7 +31,7 @@ public class playerHealth : MonoBehaviour {
 
         currentHealth -= amount;
         healthBar.fillAmount = currentHealth / startingHealth;
-        Debug.Log(healthBar.fillAmount);
+        //Debug.Log(healthBar.fillAmount);
 
 
     }

@@ -6,9 +6,10 @@ public class turretHealth : MonoBehaviour {
 
     public float startingHealth = 100;
     public float currentHealth;
-
-	// Use this for initialization
-	void Start () {
+    public GameObject explosion;
+    public AudioClip explosionSound;
+    // Use this for initialization
+    void Start () {
         currentHealth = startingHealth;
 
     }
@@ -19,9 +20,12 @@ public class turretHealth : MonoBehaviour {
 	}
 
     public void takeDamage(float amount) {
-        //Debug.Log("entered takeDamage");
-
         currentHealth -= amount;
+        if (currentHealth <= 0) {
+            Destroy(transform.parent.gameObject);
+            Instantiate(explosion, transform.position, transform.rotation);
+            AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+        }
        
     }
 }
