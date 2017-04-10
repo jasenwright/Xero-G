@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerHealth : MonoBehaviour {
 
     public float startingHealth = 100f;
     public float currentHealth;
+    public Image healthBar;
 
     // Use this for initialization
     void Start () {
+
         currentHealth = startingHealth;
+        healthBar.fillAmount = currentHealth / startingHealth;
+        
 	}
 	
 	// Update is called once per frame
@@ -18,7 +23,11 @@ public class playerHealth : MonoBehaviour {
 	}
 
     public void takeDamage(float amount) {
-        Debug.Log("entered takeDamage");
+        //Debug.Log("entered takeDamage");
+
         currentHealth -= amount;
+        healthBar.fillAmount = currentHealth / startingHealth;
+        Debug.Log(healthBar.fillAmount);
+
     }
 }
