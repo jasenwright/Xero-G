@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\bulletBeahviour.cs" />
      <Compile Include="Assets\Scripts\initialize.cs" />
      <Compile Include="Assets\Scripts\moveXero.cs" />
+     <Compile Include="Assets\Scripts\playerHealth.cs" />
      <Compile Include="Assets\Scripts\turretFire.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
