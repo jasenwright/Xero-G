@@ -34,31 +34,37 @@ public class CharacterControllerScripts : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
-		anim.SetBool ("Ground", grounded);
+        try {
+            grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+            anim.SetBool("Ground", grounded);
 
-		anim.SetFloat ("vSpeed", GetComponent<Rigidbody2D> ().velocity.y);
+            anim.SetFloat("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
 
-		float move = Input.GetAxis ("Horizontal");
+            float move = Input.GetAxis("Horizontal");
 
-		anim.SetFloat ("Speed", Mathf.Abs (move));
+            anim.SetFloat("Speed", Mathf.Abs(move));
 
-		GetComponent<Rigidbody2D> ().velocity = new Vector2 (move * maxSpeed, GetComponent<Rigidbody2D> ().velocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
-		if (move > 0 && !facingRight)
-			Flip ();
-		else if (move < 0 && facingRight)
-			Flip ();
+            if (move > 0 && !facingRight)
+                Flip();
+            else if (move < 0 && facingRight)
+                Flip();
+        }
+        catch { }
 	}
 
 	void Update () {
 		if (Input.GetKey(KeyCode.W)) {
-			anim.SetBool ("Ground", false);
-			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpForce));
-            GetComponent<Rigidbody2D>().velocity = Vector3.ClampMagnitude(GetComponent<Rigidbody2D>().velocity, maxJump);
-            //GameObject jetpack = transform.Find("Jetpack").gameObject;
-            GetComponentInChildren<ParticleSystem>().Play();
 
+            try {
+                anim.SetBool("Ground", false);
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+                GetComponent<Rigidbody2D>().velocity = Vector3.ClampMagnitude(GetComponent<Rigidbody2D>().velocity, maxJump);
+                //GameObject jetpack = transform.Find("Jetpack").gameObject;
+                GetComponentInChildren<ParticleSystem>().Play();
+            }
+            catch { }
         }
     }
 

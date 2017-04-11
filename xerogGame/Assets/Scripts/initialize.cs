@@ -32,6 +32,7 @@ public class initialize : MonoBehaviour {
         
     }
 
+    //This puts bricks around the map so the player never sees empty space
     public static void outerMapInit(GameObject caveWall) {
         float x = -10.35f;
         float y = 8.4f;
@@ -40,14 +41,15 @@ public class initialize : MonoBehaviour {
             x = -10.35f;
             for (int j = 0; j < cave.GetLength(1); j++) {
                 x = x + 2.65f;
+                //Put bricks to the left
                 if (j == 0) {
                     float z = x;
                     for (int r=10; r>0; r--) {
                         Instantiate(caveWall, new Vector3(z-2.65f, y, 0), Quaternion.identity);
                         z = z - 2.65f;
-
                     }
                 }
+                //Put bricks to the right
                 if (j == cave.GetLength(1) - 1){
                     float z = x;
                     for (int r = 10; r > 0; r--) {
@@ -55,9 +57,30 @@ public class initialize : MonoBehaviour {
                         z = z + 2.65f;
                     }
                 }
+                //Put bricks to the bottom
                 if (i == cave.GetLength(0) - 1) {
                     float z = y;
                     for (int r = 10; r > 0; r--) {
+
+                        //Bottom left corner
+                        if (j == 0) {
+                            float q = x;
+                            for (int a = 10; a > 0; a--) {
+                                Instantiate(caveWall, new Vector3(q - 2.65f, z, 0), Quaternion.identity);
+                                q = q - 2.65f;
+
+                            }
+                        }
+                        //Top right corner
+                        if (j == cave.GetLength(1) - 1) {
+                            float q = x;
+                            for (int a = 10; a > 0; a--) {
+                                Instantiate(caveWall, new Vector3(q + 2.65f, z, 0), Quaternion.identity);
+                                q = q + 2.65f;
+                            }
+                        }
+
+                        //This is the actual instantiate for the bottom
                         Instantiate(caveWall, new Vector3(x, z - 2.65f, 0), Quaternion.identity);
                         z = z - 2.65f;
                     }
@@ -70,8 +93,7 @@ public class initialize : MonoBehaviour {
     public static void addTurretsAndHealthpacks(GameObject turret, GameObject healthpacks) {
         System.Random rand = new System.Random();
         int prob;
-        prob = rand.Next(0, 99);
- 
+        enemyCounter eCounter = GameObject.Find("enemyCounter").GetComponent<enemyCounter>();
         float x = -10.35f;
         float y = 8.4f;
         for (int i = 0; i < cave.GetLength(0); i++) {
@@ -85,7 +107,10 @@ public class initialize : MonoBehaviour {
                     prob = rand.Next(0, 10);
                     if (prob == 5) {
                         Instantiate(turret, new Vector3(x, y - .8f, 0), Quaternion.identity);
+                        eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                     }
+
+                    //Add healthpacks on ground 
                     if (prob == 4) {
                         Instantiate(healthpacks, new Vector3(x, y - .8f, 0), Quaternion.identity);
                     }
@@ -96,6 +121,7 @@ public class initialize : MonoBehaviour {
                     if (prob == 5) {
                         var tur = Instantiate(turret, new Vector3(x, y + .8f, 0), Quaternion.identity);
                         tur.transform.Rotate(0, 0, 180f);
+                        eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                     }
                 }
                 //Put turrets on right wall
@@ -104,6 +130,7 @@ public class initialize : MonoBehaviour {
                     if (prob == 5) {
                         var tur = Instantiate(turret, new Vector3(x-.8f, y, 0), Quaternion.identity);
                         tur.transform.Rotate(0, 0, -90f);
+                        eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                     }
                 }
                 //Put turrets left wall
@@ -112,6 +139,7 @@ public class initialize : MonoBehaviour {
                     if (prob == 5) {
                         var tur = Instantiate(turret, new Vector3(x + .8f, y , 0), Quaternion.identity);
                         tur.transform.Rotate(0, 0, 90f);
+                        eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                     }
                 }
             }

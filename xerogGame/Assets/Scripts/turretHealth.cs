@@ -8,9 +8,11 @@ public class turretHealth : MonoBehaviour {
     public float currentHealth;
     public GameObject explosion;
     public AudioClip explosionSound;
+    public enemyCounter eCounter;
     // Use this for initialization
     void Start () {
         currentHealth = startingHealth;
+        eCounter = GameObject.Find("enemyCounter").GetComponent<enemyCounter>();
 
     }
 	
@@ -25,6 +27,9 @@ public class turretHealth : MonoBehaviour {
             Destroy(transform.parent.gameObject);
             Instantiate(explosion, transform.position, transform.rotation);
             AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+            eCounter.decreaseEnemies();
+            
+           
         }
        
     }
