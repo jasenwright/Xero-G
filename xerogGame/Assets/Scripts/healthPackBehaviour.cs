@@ -19,7 +19,8 @@ public class healthPackBehaviour : MonoBehaviour {
         //Debug.Log("Entered collision");
         if (col.gameObject.tag == "Player") {
             playerHealth player = col.GetComponent<playerHealth>();
-            player.takeDamage(-20);
+            player.takeDamage(-50);
+            Destroy(gameObject);
         }
     }
 }

@@ -9,6 +9,8 @@ public class initialize : MonoBehaviour {
     public GameObject tile;
     public GameObject character;
     public GameObject turret;
+    public GameObject healthpack;
+    public GameObject caveWall;
     public static char[,] cave = new char[25, 125];
     public static int xEnd = 10;
     public static int yEnd = 10;
@@ -24,12 +26,48 @@ public class initialize : MonoBehaviour {
         xAndYPositions = findCaves();
         connectCaves(xAndYPositions);
         cleanCave();
-        initializeCaveAndCharacter(tile, character);
-        addTurrets(turret);
+        initializeCaveAndCharacter(tile, character, caveWall);
+        addTurretsAndHealthpacks(turret, healthpack);
+        outerMapInit(caveWall);
         
     }
 
-    public static void addTurrets(GameObject turret) {
+    public static void outerMapInit(GameObject caveWall) {
+        float x = -10.35f;
+        float y = 8.4f;
+        for (int i = 0; i < cave.GetLength(0); i++) {
+            y = y - 2.65f;
+            x = -10.35f;
+            for (int j = 0; j < cave.GetLength(1); j++) {
+                x = x + 2.65f;
+                if (j == 0) {
+                    float z = x;
+                    for (int r=10; r>0; r--) {
+                        Instantiate(caveWall, new Vector3(z-2.65f, y, 0), Quaternion.identity);
+                        z = z - 2.65f;
+
+                    }
+                }
+                if (j == cave.GetLength(1) - 1){
+                    float z = x;
+                    for (int r = 10; r > 0; r--) {
+                        Instantiate(caveWall, new Vector3(z + 2.65f, y, 0), Quaternion.identity);
+                        z = z + 2.65f;
+                    }
+                }
+                if (i == cave.GetLength(0) - 1) {
+                    float z = y;
+                    for (int r = 10; r > 0; r--) {
+                        Instantiate(caveWall, new Vector3(x, z - 2.65f, 0), Quaternion.identity);
+                        z = z - 2.65f;
+                    }
+                }
+            }
+        }
+
+     }
+
+    public static void addTurretsAndHealthpacks(GameObject turret, GameObject healthpacks) {
         System.Random rand = new System.Random();
         int prob;
         prob = rand.Next(0, 99);
@@ -41,11 +79,15 @@ public class initialize : MonoBehaviour {
             x = -10.35f;
             for (int j = 0; j < cave.GetLength(1); j++) {
                 x = x + 2.65f;
+                
                 //Put turrets on ground
                 if (cave[i, j] != '#' && cave[i+1,j]=='#') {
                     prob = rand.Next(0, 10);
                     if (prob == 5) {
                         Instantiate(turret, new Vector3(x, y - .8f, 0), Quaternion.identity);
+                    }
+                    if (prob == 4) {
+                        Instantiate(healthpacks, new Vector3(x, y - .8f, 0), Quaternion.identity);
                     }
                 }
                 //Put turrets on roof
@@ -78,7 +120,7 @@ public class initialize : MonoBehaviour {
     }
             
 
-    public static void initializeCaveAndCharacter(GameObject tile, GameObject character)
+    public static void initializeCaveAndCharacter(GameObject tile, GameObject character, GameObject caveWall)
     {
         bool characterInitialized = false;
         float x = -10.35f;
@@ -99,6 +141,11 @@ public class initialize : MonoBehaviour {
                     Instantiate(character, new Vector3(x, y, 0), Quaternion.identity);
                     characterInitialized = true;
                 }
+                
+                if (cave[i, j] != '#') {
+                    Instantiate(caveWall, new Vector3(x, y, 0), Quaternion.identity);
+                }
+                
             }
         }
 

@@ -56,6 +56,9 @@ public class CharacterControllerScripts : MonoBehaviour {
 			anim.SetBool ("Ground", false);
 			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpForce));
             GetComponent<Rigidbody2D>().velocity = Vector3.ClampMagnitude(GetComponent<Rigidbody2D>().velocity, maxJump);
+            //GameObject jetpack = transform.Find("Jetpack").gameObject;
+            GetComponentInChildren<ParticleSystem>().Play();
+
         }
     }
 

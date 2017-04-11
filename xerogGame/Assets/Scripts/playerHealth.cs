@@ -21,18 +21,19 @@ public class playerHealth : MonoBehaviour {
         
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void takeDamage(float amount) {
         //Debug.Log("entered takeDamage");
 
         currentHealth -= amount;
+        //Make it so health can't be greater than 100 or less than 0
+        if (currentHealth > 100) {
+            currentHealth = 100;
+        }
+        if (currentHealth < 0) {
+            currentHealth = 0;
+        }
         healthBar.fillAmount = currentHealth / startingHealth;
-        //Debug.Log(healthBar.fillAmount);
-
-
+       
     }
 }

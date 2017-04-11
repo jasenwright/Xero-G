@@ -13,6 +13,7 @@ public class turretFire : MonoBehaviour {
     public GameObject bulletEmitterEast;
     public float bulletForce;
     public AudioClip fireSound;
+    public LayerMask whatToHit;
     //public GameObject spark;
     //public Camera camera;
     
@@ -39,31 +40,38 @@ public class turretFire : MonoBehaviour {
         character = GameObject.Find("Main Character Doesn't Run(Clone)");
         if (canFire)
         {
-            //Create List of distances
-            distanceArray[0] = Vector3.Distance(bulletEmitterWest.transform.position, character.transform.position);
-            distanceArray[1] = Vector3.Distance(bulletEmitterNorthWest.transform.position, character.transform.position);
-            distanceArray[2] = Vector3.Distance(bulletEmitterNorth.transform.position, character.transform.position);
-            distanceArray[3] = Vector3.Distance(bulletEmitterNorthEast.transform.position, character.transform.position);
-            distanceArray[4] = Vector3.Distance(bulletEmitterEast.transform.position, character.transform.position);
-
-            //Then whatever turret is closest to the character fire from that turret
-            int index=0;
-            float min = distanceArray[0];
-            for (int i=0; i<distanceArray.Length; i++) {
-                if (distanceArray[i] < min) {
-                    min = distanceArray[i];
-                    index = i;
-                }
+            //Debug.DrawRay(transform.position, character.transform.position-transform.position, Color.red);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, character.transform.position-transform.position, whatToHit);
+            if (hit.collider.gameObject.tag == "tile") {
+                return;
             }
+            else if (hit.collider.gameObject.tag == "Player") {
+                //Create List of distances
+                distanceArray[0] = Vector3.Distance(bulletEmitterWest.transform.position, character.transform.position);
+                distanceArray[1] = Vector3.Distance(bulletEmitterNorthWest.transform.position, character.transform.position);
+                distanceArray[2] = Vector3.Distance(bulletEmitterNorth.transform.position, character.transform.position);
+                distanceArray[3] = Vector3.Distance(bulletEmitterNorthEast.transform.position, character.transform.position);
+                distanceArray[4] = Vector3.Distance(bulletEmitterEast.transform.position, character.transform.position);
 
-            fire(emitterList[index]);
+                //Then whatever turret is closest to the character fire from that turret
+                int index = 0;
+                float min = distanceArray[0];
+                for (int i = 0; i < distanceArray.Length; i++) {
+                    if (distanceArray[i] < min) {
+                        min = distanceArray[i];
+                        index = i;
+                    }
+                }
+
+                fire(emitterList[index]);
+            }
         }
 
       }
 
     void fire(GameObject bulletEmitter){
 
-        if (Time.time - lastFireTime > .5) {
+        if (Time.time - lastFireTime > 1) {
 
             lastFireTime = Time.time;
         
