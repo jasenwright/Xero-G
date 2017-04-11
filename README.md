@@ -57,3 +57,5 @@ Health Pack - http://piq.codeus.net/static/media/userpics/piq_70042_400x400.png
 Intro Theme - https://www.youtube.com/watch?v=tZtzn5GQOng
 Tiles, Turrets - https://opengameart.org/content/open-gunner-starter-kit
 Turret Laser sound - http://www.freesound.org/people/bubaproducer/sounds/151022/
+Player laser sound - http://www.freesound.org/people/Dpoggioli/sounds/196914/
+
