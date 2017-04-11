@@ -12,6 +12,7 @@ public class playerHealth : MonoBehaviour {
     public float currentHealth;
     public Image healthBar;
     public GameObject player;
+    public GameObject grey;
 
     // Use this for initialization
     void Start () {
@@ -30,8 +31,13 @@ public class playerHealth : MonoBehaviour {
         if (currentHealth > 100) {
             currentHealth = 100;
         }
-        if (currentHealth < 0) {
+        if (currentHealth <= 0) {
             currentHealth = 0;
+            grey.SetActive(true);
+
+            //TO DO
+            //MAKE CHARACTER DISAPPEAR
+            
         }
         healthBar.fillAmount = currentHealth / startingHealth;
        
