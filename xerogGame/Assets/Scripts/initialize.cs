@@ -14,6 +14,8 @@ public class initialize : MonoBehaviour {
     public static char[,] cave = new char[25, 125];
     public static int xEnd = 10;
     public static int yEnd = 10;
+    public float[] xyOfCharacter;
+    public GameObject door;
 
     // Use this for initialization
     void Start () {
@@ -26,8 +28,9 @@ public class initialize : MonoBehaviour {
         xAndYPositions = findCaves();
         connectCaves(xAndYPositions);
         cleanCave();
-        initializeCaveAndCharacter(tile, character, caveWall);
-        addTurretsAndHealthpacks(turret, healthpack);
+        initializeCave(tile, caveWall);
+        xyOfCharacter = initializeCharacter(character, door);
+        addTurretsAndHealthpacks(turret, healthpack, xyOfCharacter);
         outerMapInit(caveWall);
         
     }
@@ -90,7 +93,7 @@ public class initialize : MonoBehaviour {
 
      }
 
-    public static void addTurretsAndHealthpacks(GameObject turret, GameObject healthpacks) {
+    public static void addTurretsAndHealthpacks(GameObject turret, GameObject healthpacks, float[] characterSpot) {
         System.Random rand = new System.Random();
         int prob;
         enemyCounter eCounter = GameObject.Find("enemyCounter").GetComponent<enemyCounter>();
@@ -101,45 +104,49 @@ public class initialize : MonoBehaviour {
             x = -10.35f;
             for (int j = 0; j < cave.GetLength(1); j++) {
                 x = x + 2.65f;
-                
-                //Put turrets on ground
-                if (cave[i, j] != '#' && cave[i+1,j]=='#') {
-                    prob = rand.Next(0, 10);
-                    if (prob == 5) {
-                        Instantiate(turret, new Vector3(x, y - .8f, 0), Quaternion.identity);
-                        eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
-                    }
 
-                    //Add healthpacks on ground 
-                    if (prob == 4) {
-                        Instantiate(healthpacks, new Vector3(x, y - .8f, 0), Quaternion.identity);
+                //This makes sure no turrets spawn right next to the character
+                if (x >= characterSpot[0] + 20 || x <= characterSpot[0] -20 || y>= characterSpot[1]+10 || y<=characterSpot[1]-10) {
+
+                    //Put turrets on ground
+                    if (cave[i, j] != '#' && cave[i + 1, j] == '#') {
+                        prob = rand.Next(0, 10);
+                        if (prob == 5) {
+                            Instantiate(turret, new Vector3(x, y - .8f, 0), Quaternion.identity);
+                            eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
+                        }
+
+                        //Add healthpacks on ground 
+                        if (prob == 4) {
+                            Instantiate(healthpacks, new Vector3(x, y - .8f, 0), Quaternion.identity);
+                        }
                     }
-                }
-                //Put turrets on roof
-                if (cave[i,j] !='#' && cave[i-1, j] == '#') {
-                    prob = rand.Next(0, 10);
-                    if (prob == 5) {
-                        var tur = Instantiate(turret, new Vector3(x, y + .8f, 0), Quaternion.identity);
-                        tur.transform.Rotate(0, 0, 180f);
-                        eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
+                    //Put turrets on roof
+                    if (cave[i, j] != '#' && cave[i - 1, j] == '#') {
+                        prob = rand.Next(0, 10);
+                        if (prob == 5) {
+                            var tur = Instantiate(turret, new Vector3(x, y + .8f, 0), Quaternion.identity);
+                            tur.transform.Rotate(0, 0, 180f);
+                            eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
+                        }
                     }
-                }
-                //Put turrets on right wall
-                if (cave[i, j] != '#' && cave[i, j-1] == '#') {
-                    prob = rand.Next(0, 10);
-                    if (prob == 5) {
-                        var tur = Instantiate(turret, new Vector3(x-.8f, y, 0), Quaternion.identity);
-                        tur.transform.Rotate(0, 0, -90f);
-                        eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
+                    //Put turrets on right wall
+                    if (cave[i, j] != '#' && cave[i, j - 1] == '#') {
+                        prob = rand.Next(0, 10);
+                        if (prob == 5) {
+                            var tur = Instantiate(turret, new Vector3(x - .8f, y, 0), Quaternion.identity);
+                            tur.transform.Rotate(0, 0, -90f);
+                            eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
+                        }
                     }
-                }
-                //Put turrets left wall
-                if (cave[i, j] != '#' && cave[i, j+1] == '#') {
-                    prob = rand.Next(0, 10);
-                    if (prob == 5) {
-                        var tur = Instantiate(turret, new Vector3(x + .8f, y , 0), Quaternion.identity);
-                        tur.transform.Rotate(0, 0, 90f);
-                        eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
+                    //Put turrets left wall
+                    if (cave[i, j] != '#' && cave[i, j + 1] == '#') {
+                        prob = rand.Next(0, 10);
+                        if (prob == 5) {
+                            var tur = Instantiate(turret, new Vector3(x + .8f, y, 0), Quaternion.identity);
+                            tur.transform.Rotate(0, 0, 90f);
+                            eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
+                        }
                     }
                 }
             }
@@ -148,9 +155,8 @@ public class initialize : MonoBehaviour {
     }
             
 
-    public static void initializeCaveAndCharacter(GameObject tile, GameObject character, GameObject caveWall)
-    {
-        bool characterInitialized = false;
+    public static void initializeCave(GameObject tile, GameObject caveWall){
+        //bool characterInitialized = false;
         float x = -10.35f;
         float y = 8.4f;
         for (int i = 0; i < cave.GetLength(0); i++)
@@ -164,19 +170,36 @@ public class initialize : MonoBehaviour {
                 {
                     Instantiate(tile, new Vector3(x, y, 0), Quaternion.identity);
                 }
-                if (cave[i,j]!='#' && characterInitialized == false)
-                {
-                    Instantiate(character, new Vector3(x, y, 0), Quaternion.identity);
-                    characterInitialized = true;
-                }
-                
-                if (cave[i, j] != '#') {
+
+                else {
                     Instantiate(caveWall, new Vector3(x, y, 0), Quaternion.identity);
                 }
                 
             }
         }
 
+    }
+
+    public static float[] initializeCharacter(GameObject character, GameObject door) {
+        float[] characterSpot = new float[2];
+        bool placedCharacter = false;
+        float x = -10.35f;
+        float y = 8.4f;
+        for (int i = 0; i < cave.GetLength(0); i++) {
+            y = y - 2.65f;
+            x = -10.35f;
+            for (int j = 0; j < cave.GetLength(1); j++) {
+                x = x + 2.65f;
+                if (cave[i, j] != '#' && cave[i+1,j]=='#' && placedCharacter==false) {
+                    Instantiate(character, new Vector3(x, y, 0), Quaternion.identity);
+                    Instantiate(door, new Vector3(x, y, 0), Quaternion.identity);
+                    characterSpot[0] = x;
+                    characterSpot[1] = y;
+                    placedCharacter = true;
+                }
+            }
+        }
+        return characterSpot;
     }
 
     public static void cleanCave()

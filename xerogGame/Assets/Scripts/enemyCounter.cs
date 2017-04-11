@@ -26,10 +26,18 @@ public class enemyCounter : MonoBehaviour {
         Transform nOET = canvas.transform.Find("numberOfEnemiesText");
         Text numEnemyText = nOET.GetComponent<Text>();
         numEnemyText.text = "Number of Enemies: " + numberOfEnemies;
+
+        if (numberOfEnemies == 0) {
+            loadNextLevel();
+        }
 	}
 
     public void decreaseEnemies() {
         numberOfEnemies = numberOfEnemies - 1;
         numEnemyText.text = "Number of Enemies: " + numberOfEnemies;
+    }
+
+    void loadNextLevel() {
+
     }
 }
