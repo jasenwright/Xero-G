@@ -10,11 +10,12 @@ public class turretBulletBeahviour : MonoBehaviour {
    
             //Destroy bullet
             Destroy(gameObject);
-        //Player takes damage when hit
-        if (col.tag == "Player") {
-            playerHealth player = col.GetComponent<playerHealth>();
-            player.takeDamage(10);
-        }
+            
+            //Player takes damage when hit
+            if (col.tag == "Player") {
+                playerHealth player = col.GetComponent<playerHealth>();
+                player.takeDamage(10);
+            }
         }
     }
 }

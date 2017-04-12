@@ -7,21 +7,19 @@ public class enemyCounter : MonoBehaviour {
 
     public int numberOfEnemies=0;
     public Text numEnemyText;
+    GameObject player;
 
 	// Use this for initialization
 	void Start () {
 
-        
-        
+        player = GameObject.Find("Main Character Doesn't Run(Clone)");
 
-        
     }
 	
 	// Update is called once per frame
 	void Update () {
-        
+
         //gets the number of enemies and displays it
-        GameObject player = GameObject.Find("Main Character Doesn't Run(Clone)");
         Transform canvas = player.transform.Find("Canvas");
         Transform nOET = canvas.transform.Find("numberOfEnemiesText");
         Text numEnemyText = nOET.GetComponent<Text>();

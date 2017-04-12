@@ -11,19 +11,17 @@ public class EnemyWeapon : MonoBehaviour {
     public AudioClip fireSound;
 
     public float bulletForce;
+    GameObject player;
 
     // Use this for initialization
     void Awake()
     {
         firePoint = transform.FindChild("FirePoint");
+        player = GameObject.Find("Main Character Doesn't Run(Clone)");
+        
 
     }
     public void Shoot()
-    {
-        Effect();
-    }
-
-    void Effect()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
@@ -34,5 +32,6 @@ public class EnemyWeapon : MonoBehaviour {
         bulletController.AddForce(firePoint.transform.right * bulletForce);
 
         AudioSource.PlayClipAtPoint(fireSound, firePoint.transform.position);
+
     }
 }

@@ -46,7 +46,11 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     public void jump() {
-        anim.SetBool("Ground", false);
+        try {
+            anim.SetBool("Ground", false);
+        }
+        catch { }
+        
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
         GetComponent<Rigidbody2D>().velocity = Vector3.ClampMagnitude(GetComponent<Rigidbody2D>().velocity, maxJump);
         GetComponentInChildren<ParticleSystem>().Play();

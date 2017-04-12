@@ -38,7 +38,10 @@ public class playerHealth : MonoBehaviour {
         if (currentHealth <= 0) {
             currentHealth = 0;
             //If health is 0 enter lose case
-            loseCase();
+            try {
+                loseCase();
+            }
+            catch { }
         }
         //Adjust the health bar
         healthBar.fillAmount = currentHealth / startingHealth;
