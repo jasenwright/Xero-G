@@ -30,6 +30,10 @@ public class initialize : MonoBehaviour {
             level = 0;
         }
 
+        if (level > 17) {
+            level = 0;
+        }
+
         buildCave();
         fillBorder();
         cellularAutomata();
