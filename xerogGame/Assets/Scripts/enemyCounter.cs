@@ -36,6 +36,17 @@ public class enemyCounter : MonoBehaviour {
     }
 
     void loadNextLevel() {
+        
+        //Get the current level and add one, if for some reason "level" doesn't exist start player at level 0
+        int level;
+        try {
+            level = PlayerPrefs.GetInt("level");
+        }
+        catch {
+            level = 0;
+        }
 
+        //If set level to the next level
+        PlayerPrefs.SetInt("level", level+1);
     }
 }
