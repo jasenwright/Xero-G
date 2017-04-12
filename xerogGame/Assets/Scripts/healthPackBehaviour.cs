@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class healthPackBehaviour : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public AudioClip health;
 
     //When player enters the radius of the turret the turret can fire
     void OnTriggerEnter2D(Collider2D col) {
         //Debug.Log("Entered collision");
         if (col.gameObject.tag == "Player") {
             playerHealth player = col.GetComponent<playerHealth>();
+
+            AudioSource.PlayClipAtPoint(health, player.transform.position);
             player.takeDamage(-50);
             Destroy(gameObject);
         }

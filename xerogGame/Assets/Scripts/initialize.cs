@@ -11,6 +11,7 @@ public class initialize : MonoBehaviour {
     public GameObject turret;
     public GameObject healthpack;
     public GameObject caveWall;
+    public GameObject npc;
     public static char[,] cave = new char[25, 125];
     public static int xEnd = 10;
     public static int yEnd = 10;
@@ -30,7 +31,7 @@ public class initialize : MonoBehaviour {
         cleanCave();
         initializeCave(tile, caveWall);
         xyOfCharacter = initializeCharacter(character, door);
-        addTurretsAndHealthpacks(turret, healthpack, xyOfCharacter);
+        addTurretsAndHealthpacks(turret, healthpack, xyOfCharacter, npc);
         outerMapInit(caveWall);
         
     }
@@ -93,7 +94,7 @@ public class initialize : MonoBehaviour {
 
      }
 
-    public static void addTurretsAndHealthpacks(GameObject turret, GameObject healthpacks, float[] characterSpot) {
+    public static void addTurretsAndHealthpacks(GameObject turret, GameObject healthpacks, float[] characterSpot, GameObject npc) {
         System.Random rand = new System.Random();
         int prob;
         enemyCounter eCounter = GameObject.Find("enemyCounter").GetComponent<enemyCounter>();
@@ -108,6 +109,14 @@ public class initialize : MonoBehaviour {
                 //This makes sure no turrets spawn right next to the character
                 if (x >= characterSpot[0] + 20 || x <= characterSpot[0] -20 || y>= characterSpot[1]+10 || y<=characterSpot[1]-10) {
 
+                    if (cave[i,j] != '#') {
+                        prob = rand.Next(0, 99);
+                        if (prob < 2) {
+                            Instantiate(npc, new Vector3(x, y, 0), Quaternion.identity);
+                            eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
+                        }
+                    }
+                    
                     //Put turrets on ground
                     if (cave[i, j] != '#' && cave[i + 1, j] == '#') {
                         prob = rand.Next(0, 10);
@@ -225,8 +234,7 @@ public class initialize : MonoBehaviour {
         }
     }
 
-    public static ArrayList findCaves()
-    {
+    public static ArrayList findCaves(){
         int count = 0;
         ArrayList listOfXYPositions = new ArrayList();
         for (int i = 0; i < cave.GetLength(0); i++)
