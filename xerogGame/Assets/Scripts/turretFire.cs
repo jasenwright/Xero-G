@@ -21,6 +21,7 @@ public class turretFire : MonoBehaviour {
     private float[] distanceArray = new float[5];
     private bool canFire;
     private float lastFireTime = 0;
+    GameObject character;
 
     // Use this for initialization
     void Start () {
@@ -31,13 +32,16 @@ public class turretFire : MonoBehaviour {
         emitterList[3] = bulletEmitterNorthEast;
         emitterList[4] = bulletEmitterEast;
         canFire = false;
-	}
+        character = GameObject.Find("Main Character Doesn't Run(Clone)");
+        if (character == null)
+        {
+            Debug.Log("FREAK OUT");
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        
-        GameObject character;
-        character = GameObject.Find("Main Character Doesn't Run(Clone)");
+
         if (canFire)
         {
             //Debug.DrawRay(transform.position, character.transform.position-transform.position, Color.red);

@@ -13,11 +13,6 @@ public class turretHealth : MonoBehaviour {
         currentHealth = startingHealth;
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void takeDamage(float amount) {
         currentHealth -= amount;
