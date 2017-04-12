@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\MoveTrail.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
      <Compile Include="Assets\Scripts\cameraFollowPlayer.cs" />
+     <Compile Include="Assets\Scripts\doorDetectionBehaviour.cs" />
      <Compile Include="Assets\Scripts\enemyCounter.cs" />
      <Compile Include="Assets\Scripts\healthPackBehaviour.cs" />
      <Compile Include="Assets\Scripts\initialize.cs" />
@@ -66,6 +67,7 @@
      <Compile Include="Assets\Scripts\turretBulletBeahviour.cs" />
      <Compile Include="Assets\Scripts\turretFire.cs" />
      <Compile Include="Assets\Scripts\turretHealth.cs" />
+     <Compile Include="Assets\loadNewLevel.cs" />
      <Compile Include="Assets\playerBulletBehaviour.cs" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
      <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />

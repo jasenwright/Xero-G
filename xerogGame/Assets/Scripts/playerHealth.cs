@@ -85,5 +85,8 @@ public class playerHealth : MonoBehaviour {
         Vector3 newPosition = new Vector3(player.transform.position.x,player.transform.position.y,-10); 
         AudioSource.PlayClipAtPoint(loseSound, newPosition);
 
+        //Reset the player back to level 0
+        PlayerPrefs.SetInt("level", 0);
+
     }
 }
