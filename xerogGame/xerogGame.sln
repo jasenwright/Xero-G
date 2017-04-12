@@ -1,11 +1,11 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xerogGame.Plugins", "xerogGame.Plugins.csproj", "{04A591CF-0AB1-6879-546D-BBDEAAD76B28}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{4B04C472-E41F-C6A1-FEA7-4224F0876DAB}") = "xerogGame", "Assembly-CSharp-firstpass.csproj", "{BFB7439B-E1A6-CAF6-EC97-25FEFD19E32D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xerogGame", "xerogGame.csproj", "{F925173F-A194-509E-E60F-C523137015B6}"
+Project("{4B04C472-E41F-C6A1-FEA7-4224F0876DAB}") = "xerogGame", "Assembly-CSharp.csproj", "{109BF360-019C-8C9C-6EC8-8454C8D3A9F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xerogGame.Editor.Plugins", "xerogGame.Editor.Plugins.csproj", "{F54CCED2-1777-CF69-3079-24A62FD2DCB7}"
+Project("{4B04C472-E41F-C6A1-FEA7-4224F0876DAB}") = "xerogGame", "Assembly-CSharp-Editor-firstpass.csproj", "{96DBB09C-4F80-DD9A-A489-975B67A42136}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,20 +13,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{04A591CF-0AB1-6879-546D-BBDEAAD76B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04A591CF-0AB1-6879-546D-BBDEAAD76B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04A591CF-0AB1-6879-546D-BBDEAAD76B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04A591CF-0AB1-6879-546D-BBDEAAD76B28}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F925173F-A194-509E-E60F-C523137015B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F925173F-A194-509E-E60F-C523137015B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F925173F-A194-509E-E60F-C523137015B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F925173F-A194-509E-E60F-C523137015B6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F54CCED2-1777-CF69-3079-24A62FD2DCB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F54CCED2-1777-CF69-3079-24A62FD2DCB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F54CCED2-1777-CF69-3079-24A62FD2DCB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F54CCED2-1777-CF69-3079-24A62FD2DCB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFB7439B-E1A6-CAF6-EC97-25FEFD19E32D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFB7439B-E1A6-CAF6-EC97-25FEFD19E32D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFB7439B-E1A6-CAF6-EC97-25FEFD19E32D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFB7439B-E1A6-CAF6-EC97-25FEFD19E32D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{109BF360-019C-8C9C-6EC8-8454C8D3A9F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{109BF360-019C-8C9C-6EC8-8454C8D3A9F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{109BF360-019C-8C9C-6EC8-8454C8D3A9F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{109BF360-019C-8C9C-6EC8-8454C8D3A9F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96DBB09C-4F80-DD9A-A489-975B67A42136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96DBB09C-4F80-DD9A-A489-975B67A42136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96DBB09C-4F80-DD9A-A489-975B67A42136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96DBB09C-4F80-DD9A-A489-975B67A42136}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
