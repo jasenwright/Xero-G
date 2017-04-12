@@ -19,8 +19,6 @@ public class Weapon : MonoBehaviour {
 
     public AudioClip fireSound;
 
-    public float bulletForce;
-
     // Use this for initialization
     void Awake () {
         firePoint = transform.FindChild("FirePoint");
@@ -45,13 +43,7 @@ public class Weapon : MonoBehaviour {
 
     void Effect() {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-        //Get bullet's rigid body
-        Rigidbody2D bulletController = bullet.GetComponent<Rigidbody2D>();
-
-        //Add forward momentum to bullet's rigid body so it shoots
-        bulletController.AddForce(firePoint.transform.right * bulletForce);
-
+        bullet.GetComponent<playerBulletBehaviour>().passArgs(firePoint);
         AudioSource.PlayClipAtPoint(fireSound, firePoint.transform.position);
     }
 }

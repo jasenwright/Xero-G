@@ -146,7 +146,7 @@ public class EnemyAI : MonoBehaviour {
 
                     // Fire gun at player
                     //Debug.DrawRay(transform.position, character.transform.position - transform.position, Color.red);
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, character.transform.position - transform.position, whatToHit);
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, character.transform.position - transform.position, Mathf.Infinity, whatToHit);
                     if (hit.collider.gameObject.tag == "tile")
                     {
                         return;
@@ -223,7 +223,7 @@ public class EnemyAI : MonoBehaviour {
                 {
                     gunCooldown = gunReloadTime;
 
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, character.transform.position - transform.position, whatToHit);
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, character.transform.position - transform.position, Mathf.Infinity, whatToHit);
                     if (hit.collider.gameObject.tag == "tile")
                     {
                         return;
