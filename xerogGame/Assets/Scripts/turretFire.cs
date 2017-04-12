@@ -23,6 +23,8 @@ public class turretFire : MonoBehaviour {
     private float lastFireTime = 0;
     GameObject character;
 
+    float detectionDistance = 16f;
+
     // Use this for initialization
     void Start () {
         
@@ -44,13 +46,22 @@ public class turretFire : MonoBehaviour {
         try {
             //GameObject character;
             //character = GameObject.Find("Main Character Doesn't Run(Clone)");
+            float distance = Vector3.Distance(transform.position, character.transform.position);
+            if (distance <= detectionDistance)
+            {
+                canFire = true;
+            }
+            else {
+                canFire = false;
+            }
+            
             if (canFire) {
                 //Debug.DrawRay(transform.position, character.transform.position-transform.position, Color.red);
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, character.transform.position - transform.position, whatToHit);
-                if (hit.collider.gameObject.tag == "tile") {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, character.transform.position - transform.position, Mathf.Infinity, whatToHit);
+                if (hit.collider.tag == "tile") {
                     return;
                 }
-                else if (hit.collider.gameObject.tag == "Player") {
+                else if (hit.collider.tag == "Player") {
                     //Create List of distances
                     distanceArray[0] = Vector3.Distance(bulletEmitterWest.transform.position, character.transform.position);
                     distanceArray[1] = Vector3.Distance(bulletEmitterNorthWest.transform.position, character.transform.position);
@@ -94,38 +105,16 @@ public class turretFire : MonoBehaviour {
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 bulletEmitter.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-                //This code was based off of https://www.youtube.com/watch?v=FD9HZB0Jn1w
                 //Get bullet
                 GameObject bullet = Instantiate(bulletPrefab, bulletEmitter.transform.position, bulletEmitter.transform.rotation);
 
-                //Get bullet's rigid body
-                Rigidbody2D bulletController = bullet.GetComponent<Rigidbody2D>();
-
-                //Add forward momentum to bullet's rigid body so it shoots
-                bulletController.AddForce(bulletEmitter.transform.right * bulletForce);
+                bullet.GetComponent<turretBulletBeahviour>().passArgs(bulletEmitter.transform);
 
                 AudioSource.PlayClipAtPoint(fireSound, bulletEmitter.transform.position);
 
                 //Destroy bullet after 2 seconds
                 Destroy(bullet, 2);
             }
-        }
-    }
-
-
-    //When player enters the radius of the turret the turret can fire
-    void OnTriggerEnter2D(Collider2D col){
-        //Debug.Log("Entered collision");
-        if (col.gameObject.tag == "Player")
-        {
-            canFire = true;
-        }
-    }
-
-    //When player leaves the radius of the turret it stops firing
-    void OnTriggerExit2D(Collider2D col) {
-        if (col.gameObject.tag == "Player") {
-            canFire = false;
         }
     }
 

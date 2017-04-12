@@ -19,12 +19,10 @@ public class turretHealth : MonoBehaviour {
     public void takeDamage(float amount) {
         currentHealth -= amount;
         if (currentHealth <= 0) {
-            Destroy(transform.parent.gameObject);
+            Destroy(transform.gameObject);
             Instantiate(explosion, transform.position, transform.rotation);
             AudioSource.PlayClipAtPoint(explosionSound, transform.position);
             eCounter.decreaseEnemies();
-            
-           
         }
        
     }

@@ -4,18 +4,33 @@ using UnityEngine;
 
 public class turretBulletBeahviour : MonoBehaviour {
 
-    //If the player hits a star, the star is destroyed and the score increases
-    void OnTriggerEnter2D(Collider2D col) {
-        if (col.tag == "Player" || col.tag=="tile") {
-   
-            //Destroy bullet
-            Destroy(gameObject);
-            
-            //Player takes damage when hit
-            if (col.tag == "Player") {
-                playerHealth player = col.GetComponent<playerHealth>();
-                player.takeDamage(10);
+    public float thrust;
+    Vector3 vel;
+    public LayerMask whatToHit;
+
+    public void passArgs(Transform firePoint)
+    {
+        vel = firePoint.transform.right;
+    }
+
+    void Update()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, (vel * thrust), (vel * thrust).magnitude, whatToHit);
+        try
+        {
+            if (hit.collider.tag == "tile" || hit.collider.tag == "Player")
+            {
+                //Destroy bullet
+                Destroy(gameObject);
+                //Enemy takes damage when hit
+                if (hit.collider.tag == "Player")
+                {
+                    playerHealth player = hit.collider.gameObject.GetComponent<playerHealth>();
+                    player.takeDamage(10);
+                }
             }
         }
+        catch { }
+        transform.position += vel * thrust;
     }
 }
