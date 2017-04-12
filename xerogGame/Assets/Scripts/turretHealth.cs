@@ -15,11 +15,6 @@ public class turretHealth : MonoBehaviour {
         eCounter = GameObject.Find("enemyCounter").GetComponent<enemyCounter>();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void takeDamage(float amount) {
         currentHealth -= amount;
