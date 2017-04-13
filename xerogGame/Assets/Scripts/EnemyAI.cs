@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour {
     float patrolPeriod = 3.0f;
     float gunReloadTime = 1.0f;
 
-    int state = Patrolling;
+    public int state = Patrolling;
 
     EnemyMovement enemy;
     EnemyArmRotation enemyArm;

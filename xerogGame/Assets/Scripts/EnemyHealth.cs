@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour {
     public AudioClip explosionSound;
     public enemyCounter eCounter;
     public Image healthBar;
+    EnemyAI enemyai;
 
     // Use this for initialization
     void Start()
@@ -18,12 +19,14 @@ public class EnemyHealth : MonoBehaviour {
         currentHealth = startingHealth;
         eCounter = GameObject.Find("enemyCounter").GetComponent<enemyCounter>();
         healthBar.fillAmount = currentHealth / startingHealth;
-
+        enemyai = GetComponent<EnemyAI>();
     }
 
     public void takeDamage(float amount)
     {
         currentHealth -= amount;
+
+        enemyai.state = 1;
 
         //Adjust the health bar
         healthBar.fillAmount = currentHealth / startingHealth;
