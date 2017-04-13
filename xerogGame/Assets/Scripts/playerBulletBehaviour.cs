@@ -16,7 +16,7 @@ public class playerBulletBehaviour : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, (vel * thrust), (vel * thrust).magnitude, whatToHit);
         try
         {
-            if (hit.collider.tag == "tile" || hit.collider.tag == "turret" || hit.collider.tag == "Enemy" || hit.collider.tag == "EnemyHead")
+            if (hit.collider.tag == "tile" || hit.collider.tag == "turret" || hit.collider.tag == "Enemy" || hit.collider.tag == "EnemyHead" || hit.collider.tag == "KamTurret")
             {
                 //Destroy bullet
                 Destroy(gameObject);
@@ -37,6 +37,12 @@ public class playerBulletBehaviour : MonoBehaviour {
 
                     EnemyHealth enemy = hit.collider.GetComponentInParent<EnemyHealth>();
                     enemy.takeDamage(50);
+                }
+                if (hit.collider.tag == "KamTurret")
+                {
+
+                    turretHealth enemy = hit.collider.GetComponent<turretHealth>();
+                    enemy.takeDamage(100);
                 }
             }
         }

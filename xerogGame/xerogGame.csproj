@@ -81,13 +81,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EnemyAI.cs" />
-    <Compile Include="Assets\EnemyArmRotation.cs" />
-    <Compile Include="Assets\EnemyHealth.cs" />
-    <Compile Include="Assets\EnemyWeapon.cs" />
+    <Compile Include="Assets\KamTurret.cs" />
+    <Compile Include="Assets\KamTurretAI.cs" />
     <Compile Include="Assets\Scripts\ArmRotation.cs" />
     <Compile Include="Assets\Scripts\CharacterControllerScripts.cs" />
+    <Compile Include="Assets\Scripts\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\EnemyArmRotation.cs" />
+    <Compile Include="Assets\Scripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\EnemyWeapon.cs" />
     <Compile Include="Assets\Scripts\Flipper.cs" />
     <Compile Include="Assets\Scripts\MenuControl.cs" />
     <Compile Include="Assets\Scripts\MoveTrail.cs" />
@@ -97,13 +99,13 @@
     <Compile Include="Assets\Scripts\enemyCounter.cs" />
     <Compile Include="Assets\Scripts\healthPackBehaviour.cs" />
     <Compile Include="Assets\Scripts\initialize.cs" />
+    <Compile Include="Assets\Scripts\loadNewLevel.cs" />
     <Compile Include="Assets\Scripts\moveXero.cs" />
+    <Compile Include="Assets\Scripts\playerBulletBehaviour.cs" />
     <Compile Include="Assets\Scripts\playerHealth.cs" />
     <Compile Include="Assets\Scripts\turretBulletBeahviour.cs" />
     <Compile Include="Assets\Scripts\turretFire.cs" />
     <Compile Include="Assets\Scripts\turretHealth.cs" />
-    <Compile Include="Assets\loadNewLevel.cs" />
-    <Compile Include="Assets\playerBulletBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
