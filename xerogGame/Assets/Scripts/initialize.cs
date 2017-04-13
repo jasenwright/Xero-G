@@ -21,19 +21,19 @@ public class initialize : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
         
-        try {
+        try {     
             level = PlayerPrefs.GetInt("level");
         }
-        catch {
+        catch { 
             level = 0;
+            PlayerPrefs.SetInt("level", 0);
         }
 
-        if (level > 17) {
-            level = 0;
+        if (level > 5) {
+            level = 4;
         }
-
+        
         buildCave();
         fillBorder();
         cellularAutomata();
@@ -122,10 +122,11 @@ public class initialize : MonoBehaviour {
                 //This makes sure no turrets spawn right next to the character
                 if (x >= characterSpot[0] + 20 || x <= characterSpot[0] -20 || y>= characterSpot[1]+10 || y<=characterSpot[1]-10) {
 
-
+                    
+                    
                     //Instantiate NPC
                     if (cave[i,j] != '#') {
-                        prob = rand.Next(0, 150-(level*5));
+                        prob = rand.Next(0, 130-(level*5));
                         if (prob == 0) {
                             Instantiate(npc, new Vector3(x, y, 0), Quaternion.identity);
                             eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
@@ -136,17 +137,21 @@ public class initialize : MonoBehaviour {
                     //Put turrets on ground
                     if (cave[i, j] != '#' && cave[i + 1, j] == '#') {
                         try {
-                            prob = rand.Next(0, 50 - (level * 3));
+                            prob = rand.Next(0, 15 - (level * 3));
                         }
-                        catch {prob = 1;}
-                        if (prob == 1) {
+                        catch {prob = 0;}
+                        if (prob == 0) {
                             Instantiate(turret, new Vector3(x, y - .8f, 0), Quaternion.identity);
                             eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                         }
 
-                        //***********************************************************
-                        //Add healthpacks on ground 
-                        if (prob == 2) {
+                        //Add healthpacks on ground
+                        //Odds of there being a healthpack decreases as player progresses
+                        try {
+                            prob = rand.Next(0, 10 + (level * 5));
+                        }
+                        catch { prob = 0; }
+                        if (prob == 0) {
                             Instantiate(healthpacks, new Vector3(x, y - .8f, 0), Quaternion.identity);
                         }
                     }
@@ -155,10 +160,10 @@ public class initialize : MonoBehaviour {
                     //Put turrets on roof
                     if (cave[i, j] != '#' && cave[i - 1, j] == '#') {
                         try {
-                            prob = rand.Next(0, 50 - (level * 3));
+                            prob = rand.Next(0, 15 - (level * 3));
                         }
-                        catch { prob = 1; }
-                        if (prob == 1) {
+                        catch { prob = 0; }
+                        if (prob == 0) {
                             var tur = Instantiate(turret, new Vector3(x, y + .8f, 0), Quaternion.identity);
                             tur.transform.Rotate(0, 0, 180f);
                             eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
@@ -167,10 +172,10 @@ public class initialize : MonoBehaviour {
                     //Put turrets on right wall
                     if (cave[i, j] != '#' && cave[i, j - 1] == '#') {
                         try {
-                            prob = rand.Next(0, 50 - (level * 3));
+                            prob = rand.Next(0, 15 - (level * 3));
                         }
-                        catch { prob = 1; }
-                        if (prob == 1) {
+                        catch { prob = 0; }
+                        if (prob == 0) {
                             var tur = Instantiate(turret, new Vector3(x - .8f, y, 0), Quaternion.identity);
                             tur.transform.Rotate(0, 0, -90f);
                             eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
@@ -179,15 +184,17 @@ public class initialize : MonoBehaviour {
                     //Put turrets left wall
                     if (cave[i, j] != '#' && cave[i, j + 1] == '#') {
                         try {
-                            prob = rand.Next(0, 50 - (level * 3));
-                        }catch { prob = 1; }
-                        if (prob == 1) {
+                            prob = rand.Next(0, 15 - (level * 3));
+                        }catch { prob = 0; }
+                        if (prob == 0) {
                             var tur = Instantiate(turret, new Vector3(x + .8f, y, 0), Quaternion.identity);
                             tur.transform.Rotate(0, 0, 90f);
                             eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                         }
                     }
+
                     
+                          
 
                 }
             }

@@ -27,3 +27,4 @@ C:\Conner\Csc205\Xero-G\xerogGame\Temp\bin\Debug\UnityEngine.VR.xml
 C:\Conner\Csc205\Xero-G\xerogGame\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Conner\Csc205\Xero-G\xerogGame\obj\Debug\Assembly-CSharp.dll
 C:\Conner\Csc205\Xero-G\xerogGame\obj\Debug\Assembly-CSharp.pdb
+C:\Conner\Csc205\Xero-G\xerogGame\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb

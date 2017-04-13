@@ -24,6 +24,16 @@ public class loadNewLevel : MonoBehaviour {
         //Try needed as .numberOfEnemies might have been instantiated yet
         try {
             if (col.tag == "Player" && numberOfEnemies.numberOfEnemies == 0) {
+                int level;
+                try {
+                    level = PlayerPrefs.GetInt("level");
+                }
+                catch {
+                    level = 0;
+                }
+
+                //If set level to the next level
+                PlayerPrefs.SetInt("level", level + 1);
                 menuController.SceneChanger("Level1");
             }
         }
