@@ -12,6 +12,7 @@ public class initialize : MonoBehaviour {
     public GameObject healthpack;
     public GameObject caveWall;
     public GameObject npc;
+    public GameObject kamTurret;
     public static char[,] cave = new char[25, 125];
     public static int xEnd = 10;
     public static int yEnd = 10;
@@ -46,7 +47,7 @@ public class initialize : MonoBehaviour {
         cleanCave();
         initializeCave(tile, caveWall);
         xyOfCharacter = initializeCharacter(character, door);
-        addTurretsAndHealthpacks(turret, healthpack, xyOfCharacter, npc, level);
+        addTurretsAndHealthpacks(turret, healthpack, xyOfCharacter, npc, level, kamTurret);
         outerMapInit(caveWall);
 
     }
@@ -109,7 +110,7 @@ public class initialize : MonoBehaviour {
 
      }
 
-    public static void addTurretsAndHealthpacks(GameObject turret, GameObject healthpacks, float[] characterSpot, GameObject npc, int level) {
+    public static void addTurretsAndHealthpacks(GameObject turret, GameObject healthpacks, float[] characterSpot, GameObject npc, int level, GameObject kamTurret) {
         System.Random rand = new System.Random();
         int prob;
 
@@ -132,6 +133,10 @@ public class initialize : MonoBehaviour {
                         prob = rand.Next(0, 130-(level*5));
                         if (prob == 0) {
                             Instantiate(npc, new Vector3(x, y, 0), Quaternion.identity);
+                            eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
+                        }
+                        if (prob == 1) {
+                            Instantiate(kamTurret, new Vector3(x, y, 0), Quaternion.identity);
                             eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                         }
                     }
