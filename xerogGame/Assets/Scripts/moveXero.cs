@@ -5,7 +5,6 @@ using UnityEngine;
 public class moveXero : MonoBehaviour {
 
     public GameObject xero;
-    bool changeColor = false;
     public GameObject startPosition;
     public GameObject endPosition;
     public float speed = 5.0F;

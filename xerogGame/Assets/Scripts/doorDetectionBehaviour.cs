@@ -6,7 +6,6 @@ public class doorDetectionBehaviour : MonoBehaviour {
 
     public GameObject eCounter;
     public enemyCounter numberOfEnemies; 
-    bool openDoor = false;
     Animator anim;
 
     // Use this for initialization
@@ -23,7 +22,6 @@ public class doorDetectionBehaviour : MonoBehaviour {
         //Try needed as .numberOfEnemies might have been instantiated yet
         try {
             if (col.tag == "Player" && numberOfEnemies.numberOfEnemies == 0) {
-                openDoor = true;
                 anim.SetBool("openDoor", true);
             }
         }

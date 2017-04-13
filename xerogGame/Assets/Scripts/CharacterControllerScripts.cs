@@ -23,12 +23,11 @@ public class CharacterControllerScripts : MonoBehaviour {
 
     public new Camera camera;
 
-    Transform playerGraphics;
 
     // Use this for initialization
     void Start () {
 		anim = GetComponent<Animator>();
-        playerGraphics = transform.FindChild("Graphics");
+        
 	}
 	
 	// Update is called once per frame

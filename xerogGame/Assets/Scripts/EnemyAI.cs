@@ -11,13 +11,14 @@ public class EnemyAI : MonoBehaviour {
     float detectionDistance = 16f;
     float followDistance = 12f;
     float patrolPeriod = 3.0f;
-    float gunReloadTime = 2;
+    float gunReloadTime = 1.0f;
 
     int state = Patrolling;
 
     EnemyMovement enemy;
     EnemyArmRotation enemyArm;
     EnemyWeapon enemyWeapon;
+
 
     float patrolTimer = 0;
 
