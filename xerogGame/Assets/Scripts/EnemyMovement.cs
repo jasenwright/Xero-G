@@ -59,7 +59,7 @@ public class EnemyMovement : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-        // Code that has to do with the animator, you *probably* don't have to touch this
+        // Code that has to do with the animator
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         stuck = Physics2D.OverlapCircle(forwardCheck.position, forwardRadius, whatIsGround);
         ceiling = Physics2D.OverlapCircle(ceilingCheck.position, groundRadius, whatIsGround);
@@ -73,7 +73,6 @@ public class EnemyMovement : MonoBehaviour {
             Flip();
     }
 
-    // DON'T TOUCH ANYTHING BELOW HERE
     public void Flip()
     {
         facingRight = !facingRight;

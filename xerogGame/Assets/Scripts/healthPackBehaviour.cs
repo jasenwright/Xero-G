@@ -8,7 +8,6 @@ public class healthPackBehaviour : MonoBehaviour {
 
     //When player enters the radius of the turret the turret can fire
     void OnTriggerEnter2D(Collider2D col) {
-        //Debug.Log("Entered collision");
         if (col.gameObject.tag == "Player") {
             playerHealth player = col.GetComponent<playerHealth>();
 

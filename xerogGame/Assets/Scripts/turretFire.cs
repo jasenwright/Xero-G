@@ -14,8 +14,7 @@ public class turretFire : MonoBehaviour {
     public float bulletForce;
     public AudioClip fireSound;
     public LayerMask whatToHit;
-    //public GameObject spark;
-    //public Camera camera;
+
     
     private GameObject[] emitterList = new GameObject[5];
     private float[] distanceArray = new float[5];
@@ -44,8 +43,6 @@ public class turretFire : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         try {
-            //GameObject character;
-            //character = GameObject.Find("Main Character Doesn't Run(Clone)");
             float distance = Vector3.Distance(transform.position, character.transform.position);
             if (distance <= detectionDistance)
             {
@@ -56,7 +53,6 @@ public class turretFire : MonoBehaviour {
             }
             
             if (canFire) {
-                //Debug.DrawRay(transform.position, character.transform.position-transform.position, Color.red);
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, character.transform.position - transform.position, Mathf.Infinity, whatToHit);
                 if (hit.collider.tag == "tile") {
                     return;

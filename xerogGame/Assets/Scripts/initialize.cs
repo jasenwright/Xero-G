@@ -13,30 +13,34 @@ public class initialize : MonoBehaviour {
     public GameObject caveWall;
     public GameObject npc;
     public GameObject kamTurret;
-    public static char[,] cave = new char[25, 125];
+    public GameObject door;
+    public GameObject mars;
+    public static char[,] cave; 
     public static int xEnd = 10;
     public static int yEnd = 10;
     public float[] xyOfCharacter;
-    public GameObject door;
+   
     public int level;
 
     // Use this for initialization
     void Start () {
 
-        //Get the level which the player is on
-        try {     
-            level = PlayerPrefs.GetInt("level");
-        }
-        catch { 
-            level = 0;
-            PlayerPrefs.SetInt("level", 0);
-        }
-
-        if (level > 5) {
-            level = 4;
-            PlayerPrefs.SetInt("level", 4);
-        }
         
+         //Get the level which the player is on
+         try {     
+             level = PlayerPrefs.GetInt("level");
+         }
+         catch { 
+             level = 0;
+             PlayerPrefs.SetInt("level", 0);
+         }
+
+         if (level > 5) {
+             level = 4;
+             PlayerPrefs.SetInt("level", 4);
+         }
+         
+        cave = new char[25, 55+(level*20)];
         buildCave();
         fillBorder();
         cellularAutomata();
@@ -45,9 +49,9 @@ public class initialize : MonoBehaviour {
         xAndYPositions = findCaves();
         connectCaves(xAndYPositions);
         cleanCave();
-        initializeCave(tile, caveWall);
+        initializeCave(tile, caveWall, mars);
         xyOfCharacter = initializeCharacter(character, door);
-        addTurretsAndHealthpacks(turret, healthpack, xyOfCharacter, npc, level, kamTurret);
+        addEnemiesAndHealthpacks(turret, healthpack, xyOfCharacter, npc, level, kamTurret);
         outerMapInit(caveWall);
 
     }
@@ -110,7 +114,7 @@ public class initialize : MonoBehaviour {
 
      }
 
-    public static void addTurretsAndHealthpacks(GameObject turret, GameObject healthpacks, float[] characterSpot, GameObject npc, int level, GameObject kamTurret) {
+    public static void addEnemiesAndHealthpacks(GameObject turret, GameObject healthpacks, float[] characterSpot, GameObject npc, int level, GameObject kamTurret) {
         System.Random rand = new System.Random();
         int prob;
 
@@ -126,8 +130,8 @@ public class initialize : MonoBehaviour {
 
                 //This makes sure no turrets spawn right next to the character
                 if (x >= characterSpot[0] + 20 || x <= characterSpot[0] -20 || y>= characterSpot[1]+10 || y<=characterSpot[1]-10) {
-
-                                    
+                               
+                    
                     //Instantiate NPC, odds of there being an NPC in space increase as player progresses
                     if (cave[i,j] != '#') {
                         prob = rand.Next(0, 130-(level*5));
@@ -135,10 +139,12 @@ public class initialize : MonoBehaviour {
                             Instantiate(npc, new Vector3(x, y, 0), Quaternion.identity);
                             eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                         }
-                        if (prob == 1) {
+                        
+                        if (prob != 0 && prob <=3) {
                             Instantiate(kamTurret, new Vector3(x, y, 0), Quaternion.identity);
                             eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                         }
+                        
                     }
                    
 
@@ -200,7 +206,8 @@ public class initialize : MonoBehaviour {
                             eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                         }
                     }
-                                         
+                         
+                                   
 
                 }
             }
@@ -209,7 +216,8 @@ public class initialize : MonoBehaviour {
     }
             
 
-    public static void initializeCave(GameObject tile, GameObject caveWall){
+    public static void initializeCave(GameObject tile, GameObject caveWall, GameObject mars){
+        int marsInstant = 3;
         //bool characterInitialized = false;
         float x = -10.35f;
         float y = 8.4f;
@@ -228,7 +236,12 @@ public class initialize : MonoBehaviour {
                 else {
                     Instantiate(caveWall, new Vector3(x, y, 0), Quaternion.identity);
                 }
-                
+
+                if (i == 0 && marsInstant%3==0) {
+                    Instantiate(mars, new Vector3(x, y+2, 0), Quaternion.identity);
+                }
+                marsInstant++;
+
             }
         }
 

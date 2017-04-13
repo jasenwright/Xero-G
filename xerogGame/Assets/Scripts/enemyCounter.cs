@@ -30,15 +30,17 @@ public class enemyCounter : MonoBehaviour {
 
         //Needed so can get rid of background image
         Transform numEnemyBackground = canvas.transform.Find("numEnemiesTextBackground");
-        numEnemyBackgroundImage = numEnemyBackground.GetComponent<Image>(); 
-        
+        numEnemyBackgroundImage = numEnemyBackground.GetComponent<Image>();
+
+        levelText.text = "LEVEL: " + PlayerPrefs.GetInt("level");
+
 
     }
 
 	void Update () {
 
         numEnemyText.text = "NUMBER OF ENEMIES: " + numberOfEnemies;
-        levelText.text = "LEVEL: " + PlayerPrefs.GetInt("level");
+        
 
         if (numberOfEnemies == 0) {
             //Instructs the player to go to the door and removes text background image

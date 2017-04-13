@@ -46,8 +46,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\KamTurret.cs" />
-     <Compile Include="Assets\KamTurretAI.cs" />
      <Compile Include="Assets\Scripts\ArmRotation.cs" />
      <Compile Include="Assets\Scripts\CharacterControllerScripts.cs" />
      <Compile Include="Assets\Scripts\EnemyAI.cs" />
@@ -56,6 +54,8 @@
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\EnemyWeapon.cs" />
      <Compile Include="Assets\Scripts\Flipper.cs" />
+     <Compile Include="Assets\Scripts\KamTurret.cs" />
+     <Compile Include="Assets\Scripts\KamTurretAI.cs" />
      <Compile Include="Assets\Scripts\MenuControl.cs" />
      <Compile Include="Assets\Scripts\MoveTrail.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
