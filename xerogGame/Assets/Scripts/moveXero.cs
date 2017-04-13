@@ -10,7 +10,6 @@ public class moveXero : MonoBehaviour {
     public float speed = 5.0F;
     private float startTime;
     private float journeyLength;
-    public AudioClip whooshSound;
 
     // Use this for initialization
     void Start () {

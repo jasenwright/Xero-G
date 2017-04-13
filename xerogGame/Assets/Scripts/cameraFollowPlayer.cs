@@ -10,8 +10,14 @@ public class cameraFollowPlayer : MonoBehaviour {
     void LateUpdate() {
 
         //Try and Find Player
-        player = GameObject.Find("Main Character Doesn't Run(Clone)");
+        try {
+            player = GameObject.Find("Main Character Doesn't Run(Clone)");
+        }
+        catch {
+            Debug.Log("Error: Couldn't find player");
+        }
 
+        //Move the camera to see the character
         try {
             transform.position = player.transform.position + new Vector3(0, 0, -10);
         }

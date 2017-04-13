@@ -18,22 +18,23 @@ public class enemyCounter : MonoBehaviour {
         nextLevelLoaded = false;
         player = GameObject.Find("Main Character Doesn't Run(Clone)");
 
-        //gets the number of enemies and displays it
         Transform canvas = player.transform.Find("Canvas");
 
+        //gets the number of enemies and displays it
         Transform nOET = canvas.transform.Find("numberOfEnemiesText");
         numEnemyText = nOET.GetComponent<Text>();
 
+        //Display the level
         Transform level = canvas.transform.Find("Level");
         levelText = level.GetComponent<Text>();
 
+        //Needed so can get rid of background image
         Transform numEnemyBackground = canvas.transform.Find("numEnemiesTextBackground");
         numEnemyBackgroundImage = numEnemyBackground.GetComponent<Image>(); 
         
 
     }
-	
-	// Update is called once per frame
+
 	void Update () {
 
         numEnemyText.text = "NUMBER OF ENEMIES: " + numberOfEnemies;
@@ -43,31 +44,12 @@ public class enemyCounter : MonoBehaviour {
             //Instructs the player to go to the door and removes text background image
             numEnemyBackgroundImage.enabled = false;
             numEnemyText.text = "GO BACK TO THE DOOR TO PROCEEED TO NEXT LEVEL";
-            //loadNextLevel();
+
         }
 	}
 
     public void decreaseEnemies() {
         numberOfEnemies = numberOfEnemies - 1;
-        //numEnemyText.text = "NUMBER OF ENEMIES: " + numberOfEnemies;
     }
 
-    void loadNextLevel() {
-
-        if (nextLevelLoaded == false) {
-            //Get the current level and add one, if for some reason "level" doesn't exist start player at level 0
-            int level;
-            try {
-                level = PlayerPrefs.GetInt("level");
-            }
-            catch {
-                level = 0;
-            }
-
-            //If set level to the next level
-            PlayerPrefs.SetInt("level", level + 1);
-            nextLevelLoaded = true;
-        }
-
-    }
 }

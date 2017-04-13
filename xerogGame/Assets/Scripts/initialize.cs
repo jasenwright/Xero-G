@@ -21,7 +21,8 @@ public class initialize : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
+
+        //Get the level which the player is on
         try {     
             level = PlayerPrefs.GetInt("level");
         }
@@ -32,6 +33,7 @@ public class initialize : MonoBehaviour {
 
         if (level > 5) {
             level = 4;
+            PlayerPrefs.SetInt("level", 4);
         }
         
         buildCave();
@@ -110,9 +112,11 @@ public class initialize : MonoBehaviour {
     public static void addTurretsAndHealthpacks(GameObject turret, GameObject healthpacks, float[] characterSpot, GameObject npc, int level) {
         System.Random rand = new System.Random();
         int prob;
+
         enemyCounter eCounter = GameObject.Find("enemyCounter").GetComponent<enemyCounter>();
         float x = -10.35f;
         float y = 8.4f;
+
         for (int i = 0; i < cave.GetLength(0); i++) {
             y = y - 2.65f;
             x = -10.35f;
@@ -122,9 +126,8 @@ public class initialize : MonoBehaviour {
                 //This makes sure no turrets spawn right next to the character
                 if (x >= characterSpot[0] + 20 || x <= characterSpot[0] -20 || y>= characterSpot[1]+10 || y<=characterSpot[1]-10) {
 
-                    
-                    
-                    //Instantiate NPC
+                                    
+                    //Instantiate NPC, odds of there being an NPC in space increase as player progresses
                     if (cave[i,j] != '#') {
                         prob = rand.Next(0, 130-(level*5));
                         if (prob == 0) {
@@ -134,7 +137,7 @@ public class initialize : MonoBehaviour {
                     }
                    
 
-                    //Put turrets on ground
+                    //Put turrets on ground - odds of turrets being placed increases as player progresses
                     if (cave[i, j] != '#' && cave[i + 1, j] == '#') {
                         try {
                             prob = rand.Next(0, 15 - (level * 3));
@@ -192,9 +195,7 @@ public class initialize : MonoBehaviour {
                             eCounter.numberOfEnemies = eCounter.numberOfEnemies + 1;
                         }
                     }
-
-                    
-                          
+                                         
 
                 }
             }
@@ -378,6 +379,7 @@ public class initialize : MonoBehaviour {
                 }
             }
         }
+        //Returns a list of the center point of each cavern to connect the caves
         return listOfXYPositions;
     }
 
@@ -507,7 +509,9 @@ public class initialize : MonoBehaviour {
         {
             for (int y = 0; y < cave.GetLength(1); y++)
             {
+                //Random Number
                 prob = rand.Next(0, 99);
+                //55% chance as number is between 0 and 99
                 if (prob < 55)
                 {
                     cave[i, y] = '#';
@@ -520,6 +524,7 @@ public class initialize : MonoBehaviour {
         }
     }
 
+    //Puts a # along the border of the 2D array
     public static void fillBorder()
     {
         for (int i = 0; i < cave.GetLength(0); i++)
