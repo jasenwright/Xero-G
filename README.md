@@ -42,19 +42,25 @@
 		
 
 ## Different Player Types
--More Health 
--Faster
--Ability to have more weapons 
-Shoot faster
-Hold more ammo
-Become invisbile
-Slow down time?
-Invincible for short period of time
-Health regen
-If lighting based can see farther
-### Teleport?
-Walk through walls
-Somehow effect the environment
+- More Health <br> 
+-Faster<br>
+-Ability to have more weapons <br>
+-Shoot faster<br>
+-Hold more ammo<br>
+-Become invisbile<br>
+-Slow down time?<br>
+-Invincible for short period of time<br>
+-Health regen<br>
+-If lighting based can see farther<br>
+### -Teleport?<br>
+-Walk through walls<br>
+-Somehow effect the environment<br>
+-Does more damage <br>
+-Less health<br>
+
+## Risk vs Reward
+-Get health when  
+
 
 
 
