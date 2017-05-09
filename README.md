@@ -5,12 +5,14 @@
 ### Intro
 	The year is 20xx and the space station Mars Xplorer has gone silent. It is your 
 	mission to figure out what's going on. Is the crew the safe? Are they even still alive?
-<br>	
+
+
 ### Game Type
 	-2D action platformer shooter with unique level generation
 	-Roguelike, endless gameplay.
 	-As player advances through the game it gets more difficult by adding more enemies and increasing enemy health
-<br>
+
+
 ### Technical Breadth
 	-Audio
 		-Running sound
@@ -40,8 +42,8 @@
 		
 
 ## Different Player Types <br>
-	More Health <br>
-	Faster <br>
-	Ability to have more weapons <br>
+	More Health 
+	Faster
+	Ability to have more weapons 
 
 
