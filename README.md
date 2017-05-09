@@ -64,3 +64,6 @@
 - Trade ammo for health and vice versa
 - ### Make bullets currency?? e.g buy items with it and have different values for different weapons, e.g shotgun shells are worth more than pistol bullets
 - Completing level quicker means something, but may be able to find more things within the level
+
+## Random Ideas
+- When die play mini game to stay alive
