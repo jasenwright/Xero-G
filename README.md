@@ -59,3 +59,9 @@ Tiles, Turrets - https://opengameart.org/content/open-gunner-starter-kit
 Turret Laser sound - http://www.freesound.org/people/bubaproducer/sounds/151022/
 Player laser sound - http://www.freesound.org/people/Dpoggioli/sounds/196914/
 
+##Different Player Types <br>
+More Health <br>
+Faster <br>
+Ability to have more weapons <br>
+
+
