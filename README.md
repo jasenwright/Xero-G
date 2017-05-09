@@ -41,10 +41,10 @@
 		-Enemies take into account player motion and shoot in the direction there are heading
 		
 
-## Different Player Types <br>
-More Health 
-Faster
-Ability to have more weapons 
+## Different Player Types
+-More Health 
+-Faster
+-Ability to have more weapons 
 Shoot faster
 Hold more ammo
 Become invisbile
