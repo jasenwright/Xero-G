@@ -45,5 +45,16 @@
 	More Health 
 	Faster
 	Ability to have more weapons 
+	Shoot faster
+	Hold more ammo
+	Become invisbile
+	Slow down time?
+	Invincible for short period of time
+	Health regen
+	If lighting based can see farther
+	### Teleport?
+	Walk through walls
+	Somehow effect the environment
+	
 
 
