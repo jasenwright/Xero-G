@@ -13,7 +13,7 @@ public class EnemyWeapon : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-        firePoint = transform.FindChild("FirePoint");
+        firePoint = transform.Find("FirePoint");
     }
     public void Shoot()
     {

@@ -2,34 +2,45 @@ Initialize engine version: 5.5.0f3 (38b4efef76f0)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: Intel(R) HD Graphics 4000 (ID=0x162)
-    Vendor:   Intel
-    VRAM:     912 MB
-    Driver:   10.18.10.3958
+    Renderer: NVIDIA GeForce GTX 650 (ID=0xfc6)
+    Vendor:   NVIDIA
+    VRAM:     995 MB
+    Driver:   22.21.13.8205
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
-Loading C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-Platform assembly: C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
-Loading C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.026 seconds
-Platform assembly: C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Conner\Csc205\Xero-G\xerogGame\Xero-G_Data\Managed\System.dll (this message is harmless)
-desktop: 1280x1024 60Hz; virtual: 2560x1024 at 0,0
+Platform assembly: C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.044 seconds
+Platform assembly: C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Jasen\Desktop\Xero-G\xerogGame\Xero-G_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
-XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.239131 ms
+UnloadTime: 1.332586 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.433771 ms
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 858.
+Total: 0.543054 ms (FindLiveObjects: 0.041131 ms CreateObjectMapping: 0.036801 ms MarkObjects: 0.455225 ms  DeleteObjects: 0.009586 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 16.915710 ms
+
+Unloading 363 unused Assets to reduce memory usage. Loaded Objects now: 387.
+Total: 0.728299 ms (FindLiveObjects: 0.029070 ms CreateObjectMapping: 0.035255 ms MarkObjects: 0.191429 ms  DeleteObjects: 0.472234 ms)
+
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2140 -> priority: 1 
-  Thread -> id: 14cc -> priority: 1 
+  Thread -> id: 278c -> priority: 1 
+  Thread -> id: 2058 -> priority: 1 
